@@ -1,3 +1,5 @@
+import math
+
 """
 [파이썬 기본 문법 - 리스트와 딕셔너리 활용]
 
@@ -41,14 +43,21 @@ def find_above_average_students(students):
     Returns:
         tuple: (평균 점수, 평균 이상 학생 이름 리스트)
     """
-    # TODO: 모든 학생의 점수를 리스트로 추출하세요
-    pass
+    # 모든 학생의 점수를 리스트로 추출하세요
+    all_scores = []
+    for student in students:
+        all_scores.append(student.get('score'))
     
-    # TODO: 평균 점수를 계산하세요
-    pass
+
+    
+    # 평균 점수를 계산하세요
+    average = sum(all_scores) / len(all_scores)
     
     # TODO: 평균 이상인 학생들의 이름을 리스트로 추출하세요
-    pass
+    above_average_students = []
+    for student in students:
+        if student.get('score') >= average:
+            above_average_students.append(student.get('name'))
     
     return average, above_average_students
 
