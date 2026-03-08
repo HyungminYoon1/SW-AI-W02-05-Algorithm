@@ -41,8 +41,20 @@ def insertion_sort(arr):
     ## j는 key 바로 앞 인덱스부터 시작
     ## arr[j] > key인 동안 원소를 오른쪽으로 이동
     ## 찾은 위치에 key 삽입
-    pass
-    
+    for picked_ele_index in range (1, n):
+        # picked_ele_index-1 이전까지는 정렬되었다고 가정
+        key = arr[picked_ele_index] # 키 값을 저장
+        
+        # 선택한 숫자를 바로 왼쪽의 숫자부터 하나씩 비교하여 key보다 큰 값들은 오른쪽으로 밀어낸다.
+        for j in range(picked_ele_index-1, -1, -1): # key의 바로 왼쪽의 숫자부터 첫 번째 숫자까지 순차적으로 key와 비교한다
+            if arr[j] > key: # 해당 숫자가 key 보다 크면, 
+                arr[j+1] = arr[j] # j위치에 있던 해당 숫자를 오른쪽으로 한 칸씩 밀어내고(오른쪽 칸에 왼쪽 값을 복사하여 넣는다) 다음 단계를 검토한다
+                if j == 0: # 만약 끝까지 갔는데도 모든 숫자가 key보다 컸다면 key를 맨 앞에 넣는다
+                    arr[0] = key
+            else: # j 위치의 숫자가 더 이상 key보다 크지 않다면, key가 들어갈 위치는 j+1이 된다.(바로 이전 단계의 j 위치)
+                arr[j+1] = key # 남은 자리에 key 값을 넣는다.
+                break
+
     return arr
 
 def insertion_sort_with_steps(arr):
@@ -60,7 +72,9 @@ def insertion_sort_with_steps(arr):
         print(f"정렬된 부분: {arr[:i]}")
         
         # TODO: 삽입 위치 찾기 및 이동
-        pass
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
         
         arr[j + 1] = key
         print(f"삽입 후: {arr}")
@@ -90,5 +104,3 @@ if __name__ == "__main__":
     result3 = insertion_sort(arr3.copy())
     print(f"정렬 후: {result3}")
     print("이미 정렬된 경우 O(n) 시간 소요")
-
-
