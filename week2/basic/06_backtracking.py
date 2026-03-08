@@ -44,14 +44,21 @@ def combinations(n, k):
             current_combination: 현재까지 선택한 숫자들
         """
         # TODO: base case - k개를 모두 선택했으면 결과에 추가
-        pass
-        
+        if len(current_combination) == k:
+            result.append(current_combination.copy()) # k개 조합이 완료되면 그 복사본을 저장한다. 원본을 더할 경우 current_combination 객체의 참조가 저장된다. 백트래킹 과정에서 current_combination이 계속 수정되므로 모든 결과가 동일한 리스트 객체를 가리키게 된다.
+            return
+
         # TODO: start부터 n까지 숫자를 하나씩 시도
-        ## TODO: 백트랙킹 3단계 구현
-        ## 1. 선택(Choose)
-        ## 2. 탐색(Explore)
-        ## 3. 취소(Unchoose)
-        pass
+        for i in range(start, n+1):
+           
+            ## TODO: 백트랙킹 3단계 구현
+            ## 1. 선택(Choose)
+            current_combination.append(i) # 조합 리스트에 숫자를 추가한다
+            ## 2. 탐색(Explore)
+            backtrack(i+1, current_combination) # 재귀 탐색: 그 다음 단계로 넘어가 조합 리스트에 숫자를 더 추가한다
+            ## 3. 선택 취소(Unchoose)
+            current_combination.pop() # 리스트의 마지막 요소 제거: 재귀 탐색이 끝나면 현재 선택을 취소하여 이전 상태로 되돌린다. 그래야 다음 후보 숫자 시도가 가능한다.
+            # 재귀 호출(backtrack)이 끝나면 항상 pop이 실행된다. 이는 성공 여부와 관계없이 현재 선택을 취소하여 이전 상태로 복귀하기 위함이다.
     
     backtrack(1, [])
     return result
@@ -95,4 +102,3 @@ if __name__ == "__main__":
     result4 = combinations(n4, k4)
     print(f"C({n4}, {k4}) = {result4}")
     print(f"총 {len(result4)}개의 조합")
-
