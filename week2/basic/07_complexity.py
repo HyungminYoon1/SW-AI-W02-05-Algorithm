@@ -92,7 +92,7 @@ def measure_time(func, nums, method_name):
 
     result = func(nums[:])  # 복사본 전달
     print(f"{method_name}: {sorted(result)}")
-    print(f"실행 시간: {elapsed_time:.6f}초")
+    # print(f"실행 시간: {elapsed_time:.6f}초")
     print()
 
 # 테스트 케이스
