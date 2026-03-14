@@ -39,16 +39,24 @@ def process_emergency_room(patients):
     # TODO: 빈 힙 생성
     heap = []
     
+    def swap_tuple(t):
+        return (t[1], t[0])
     
     # TODO: 모든 환자를 힙에 추가
-    pass
+    
+    for patient in patients:
+        patient = swap_tuple(patient)
+        heapq.heappush(heap, patient)
         
     processed = []
     
     # TODO: 힙이 비어있지 않은 동안 반복
     ## 힙에서 우선순위가 가장 높은 환자 꺼내기
     ## 환자 처리
-    pass
+
+    while heap:
+        urgent_patient = heapq.heappop(heap)
+        processed.append(urgent_patient[1])
         
     return processed
 
