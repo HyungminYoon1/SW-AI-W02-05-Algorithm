@@ -35,26 +35,37 @@ class LinkedList:
     
     def append(self, data):
         """리스트 끝에 노드 추가"""
+        
         new_node = Node(data)
         
         # TODO: 리스트가 비어있으면 head를 new_node로 설정
-        pass
+        if self.head == None:
+            self.head = new_node
+            return
         
         # TODO: 마지막 노드 찾기
-        pass
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
         
         # TODO: 마지막 노드의 next를 new_node로 설정
-        pass
+        last_node.next = new_node # type: ignore
+        return
     
     def print_list(self):
         """리스트의 모든 값 출력"""
         values = []
         
         # TODO: head부터 시작
-        pass
+        if self.head is None:
+            values.append(self.head)
+            return
         
         # TODO: 끝까지 순회하며 값 수집
-        pass
+        last= self.head
+        while last:
+            values.append(last.data)
+            last = last.next
         
         return values
 
