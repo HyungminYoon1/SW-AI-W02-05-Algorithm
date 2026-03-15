@@ -31,7 +31,7 @@ for i in range(order_count):
         print(stacked_orders[i])
         
 
-## gpt가 제시한 최적 코드
+## gpt가 제시한 개선 코드
 import sys
 
 stack = []
@@ -50,3 +50,29 @@ for _ in range(n):
         print(0 if stack else 1)
     elif cmd == "top":
         print(stack[-1] if stack else -1)
+
+
+## gpt가 제시한 최적 코드
+import sys
+
+input = sys.stdin.readline
+stack = []
+out = []
+
+n = int(input())
+
+for _ in range(n):
+    cmd = input().split()
+
+    if cmd[0] == "push":
+        stack.append(cmd[1])
+    elif cmd[0] == "pop":
+        out.append(stack.pop() if stack else "-1")
+    elif cmd[0] == "size":
+        out.append(str(len(stack)))
+    elif cmd[0] == "empty":
+        out.append("0" if stack else "1")
+    elif cmd[0] == "top":
+        out.append(stack[-1] if stack else "-1")
+
+sys.stdout.write("\n".join(out))
