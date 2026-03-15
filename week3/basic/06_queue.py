@@ -49,6 +49,7 @@ def process_print_queue(jobs):
         next_work = queue[0]
         processed.append(next_work)
         queue.popleft()
+        print("처리:",next_work)
     
     return processed
 
