@@ -56,6 +56,7 @@ def process_emergency_room(patients):
 
     while heap:
         urgent_patient = heapq.heappop(heap)
+        print(f"처리: {urgent_patient[1]} (우선순위: {urgent_patient[0]})")
         processed.append(urgent_patient[1])
         
     return processed
