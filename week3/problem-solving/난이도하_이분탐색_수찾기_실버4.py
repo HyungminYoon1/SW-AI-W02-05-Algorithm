@@ -30,7 +30,6 @@ for target in target_items:
     print(binary_search(element_list, target))
         
 
-
 # 최적 풀이
 # n_count = input()
 # element_set = set(map(int, input().split()))
