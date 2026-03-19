@@ -4,28 +4,31 @@
 ## 📂 폴더 구조
 
 ```
-SW_AI-W02-05-TEMPLATE/
+SW-AI-W02-05-Algorithm/
 ├── week2/
-│   ├── basic/              # 기본 개념 학습 (10개 문제)
+│   ├── basic/                    # 기본 개념 학습 및 로컬 테스트
 │   │   ├── 01_python_dict.py
 │   │   ├── 02_array.py
-│   │   └── ...
-│   │   └── check.py        # 로컬 테스트 스크립트
-│   └── problem-solving/    # 알고리즘 문제 풀이 (20개 문제)
-│       ├── 난이도하_파이썬문법_최댓값_브론즈3.py
-│       ├── 난이도중_백트래킹_NQueen_골드4.py
-│       └── ...
+│   │   ├── ...
+│   │   └── check.py
+│   ├── learning-docs/            # 주차별 학습 개념 정리 문서
+│   ├── problem-solving/          # 알고리즘 문제 풀이 코드
+│   ├── quiz/                     # 퀴즈 풀이 및 리뷰 자료
+│   └── team-core-time-problems/  # 팀 코어타임 실습 문제
 ├── week3/
 │   ├── basic/
-│   └── problem-solving/
+│   ├── learning-docs/
+│   └── ...
 ├── week4/
 │   ├── basic/
-│   └── problem-solving/
+│   ├── problem-solving/
+│   └── ...
 ├── week5/
 │   ├── basic/
-│   └── problem-solving/
-├── problems set.md         # 문제 목록 및 링크
-└── README.md               # 본 문서
+│   ├── problem-solving/
+│   └── ...
+├── problems set.md               # 문제 목록 및 링크
+└── README.md                     # 본 문서
 ```
 
 ## 저장소 설정하기
