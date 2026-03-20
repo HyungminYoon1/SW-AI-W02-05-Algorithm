@@ -40,22 +40,42 @@ def topological_sort(vertices, edges):
         위상 정렬 순서
     """
     # TODO: 그래프와 진입 차수 초기화
-    pass
+    graph = {i: [] for i in range(vertices)}
+    in_degree = {i: 0 for i in range(vertices)}
     
     # TODO: 그래프 구성 및 진입 차수 계산
-    pass
-    
+    for node, toward_node in edges:
+        graph[node].append(toward_node)
+        in_degree[toward_node] += 1
+
     # TODO: 진입 차수가 0인 정점들을 큐에 추가
-    pass
+    # 위상 정렬에서 진입 차수가 0인 정점은 먼저 처리할 수 있는 정점이기 때문
+    q = deque()
+
+    for i in in_degree:
+        if in_degree[i] == 0:
+            q.append(i)
     
     result = []
     
     # TODO: 큐가 빌 때까지 반복
     ## 큐에서 정점 꺼내기
     ## 인접한 정점들의 진입 차수 감소
-    pass
+    while q:
+        node = q.popleft()
+        result.append(node)
+        near_nodes = graph[node]
+
+        for near_node in near_nodes:
+            in_degree[near_node] -= 1
+            if in_degree[near_node] == 0:
+                q.append(near_node)
+
+    # 사이클이 들어오는 것을 방어하는 로직
+    if len(result) == vertices:
+        return result
     
-    return result
+    raise ValueError("Unable to make topological sort")
 
 # 테스트 케이스
 if __name__ == "__main__":
@@ -75,3 +95,4 @@ if __name__ == "__main__":
     
     result = topological_sort(vertices, edges)
     print(f"수강 순서: {result}")
+    print()
