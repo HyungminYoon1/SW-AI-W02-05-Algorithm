@@ -40,14 +40,35 @@ def make_change_greedy(change, coins):
     Returns:
         (총 개수, {동전: 개수} 딕셔너리)
     """
+    
+    # 방어코드
+    if change < 0:
+        raise ValueError("금액은 0 이상이이야 합니다.")
+    if coins == []:
+        raise ValueError("사용 가능한 동전이 없습니다.")
+    for coin in coins:
+        if coin <=0:
+            raise ValueError("동전의 값은 양수여야 합니다.")
+    
     result = {}
     total_coins = 0
     
     # TODO: 각 동전에 대해 반복
     ## 현재 동전으로 거슬러줄 수 있는 개수 계산    
     ## 개수가 0보다 크면 결과에 추가
-    pass
+
+    coins = sorted(coins, reverse=True) # 동전 크기 역순으로 정렬
+
+    for coin in coins:
+        coin_count = change // coin
+        change = change % coin
+        if coin_count > 0:
+            result[coin] = result.get(coin, 0) + coin_count # (방어코드) 코인이 없으면 0으로 초기화 후 몫을 더함
+            total_coins += coin_count
     
+    if change != 0:
+        raise ValueError("금액이 현재 동전으로 나누어 떨어지지 않습니다.")
+
     return total_coins, result
 
 # 테스트 케이스
