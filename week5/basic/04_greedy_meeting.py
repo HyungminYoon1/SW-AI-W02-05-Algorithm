@@ -37,9 +37,10 @@ def select_meetings(meetings):
         return 0, []
     
     # TODO: 종료 시간 기준으로 정렬
-    sorted_meetings = sorted(meetings, key=lambda x: x[1])
-    ## (참고) 종료 시간이 같을 때 시작 시간이 빠른 회의를 먼저 둘지 명시하고 싶다면 key=lambda x: (x[1], x[0])로 정렬 가능
-    
+    sorted_meetings = sorted(meetings, key=lambda x: (x[1], x[0]))
+    ## (참고) 같은 종료시간에서는 시작시간이 더 빠른 회의를 먼저 잡아야 뒤에 붙일 수 있는 회의 수가 줄어들지 않습니다.
+    ## 이유: (1, 1) 길이가 0인 회의처럼 보이지만 문제 조건상 금지되어 있지 않으면 유효한 회의로 처리되기 때문입니다.
+
     selected = []
     
     # TODO: 첫 번째 회의 선택
