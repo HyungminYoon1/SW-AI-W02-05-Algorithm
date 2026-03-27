@@ -45,9 +45,9 @@
 계산 과정 (예: fib(5)):
 일반 재귀:
                     fib(5)
-                 /          \
+                 /          |
             fib(4)            fib(3)
-           /      \          /      \
+           /      |          /      |
        fib(3)   fib(2)   fib(2)   fib(1)
        ...      ...      ...       ...
 총 계산: 15번 (중복 다수)
@@ -83,17 +83,26 @@ def fibonacci_memo(n, memo=None):
     Returns:
         n번째 피보나치 수
     """
+    # 방어 코드
+    if n < 0:
+        raise ValueError("n은 0이상의 정수로 입력해주세요.")
+
     # TODO: memo가 None이면 빈 딕셔너리로 초기화
-    pass
+    if memo is None:
+        memo = {}
+    ## memo = {0: 0, 1: 1} 으로 한 번에 초기화하는 것이 더 효과적이나 교육 목적상 초기화 단계 분리
     
     # TODO: base case 
-    pass
+    memo[0] = 0
+    memo[1] = 1
+    # 이 이후는 fibonacci_memo(n, memo) = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo) 으로 계산
     
     # TODO: 이미 계산한 값이 memo에 있으면 반환
-    pass
+    if n in memo:
+        return memo[n]
     
     # TODO: 재귀 호출하여 계산하고 memo에 저장
-    pass
+    memo[n] = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo)
     
     return memo[n]
 
