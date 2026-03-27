@@ -46,16 +46,34 @@ def climb_stairs(n):
         n번째 계단까지 오르는 방법의 수
     """
     # TODO: 특별한 경우 처리
-    pass
-    
+    if n <= 0:
+        raise ValueError("n은 1이상의 정수를 입력해주세요.")
+    if n == 1:
+        return 1
+    if n == 2:
+        return 2
     
     # TODO: dp 배열 생성 및 초기화
-    pass
+    dp = [0, 1, 2]
     
     # TODO: 작은 문제부터 차례로 계산
-    pass
+    for i in range(3, n+1):
+        next_value = dp[i-1] + dp[i-2]
+        dp.append(next_value)
     
     return dp[n]
+
+    '''
+    *참고사항
+    새 값을 계산할 때 필요한 건 항상 바로 이전 2개뿐입니다.
+    따라서 dp 배열 전체를 들고 있을 필요 없이 이전 두 값만 변수 2개에 저장해가며 갱신할 수 있습니다.
+    
+    a, b = 1, 2  # 1칸, 2칸의 경우의 수
+    for _ in range(3, n + 1):
+        a, b = b, a + b
+    return b
+
+    '''
 
 # 테스트 케이스
 if __name__ == "__main__":
