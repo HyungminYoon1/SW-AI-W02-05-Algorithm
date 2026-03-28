@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 Week4 문제 채점 스크립트
 """
@@ -40,7 +40,7 @@ def check_solution(problem_file):
     try:
         # 문제 파일 실행
         result = subprocess.run(
-            ['python3', problem_file],
+            ['python', problem_file],
             capture_output=True,
             text=True,
             timeout=10
@@ -84,9 +84,9 @@ def check_solution(problem_file):
 def main():
     if len(sys.argv) < 2:
         print("사용법:")
-        print("  python3 check.py --all           # 모든 문제 채점")
-        print("  python3 check.py 1               # 1번 문제만 채점")
-        print("  python3 check.py 01_dp_fibonacci # 특정 문제 채점")
+        print("  python check.py --all           # 모든 문제 채점")
+        print("  python check.py 1               # 1번 문제만 채점")
+        print("  python check.py 01_dp_fibonacci # 특정 문제 채점")
         return
     
     # 모든 문제 채점
@@ -142,9 +142,9 @@ def main():
             else:
                 print(f"❌ 문제 번호 {problem_num}를 찾을 수 없습니다.")
                 print("\n사용법:")
-                print("  python3 check.py --all    # 모든 문제 채점")
-                print("  python3 check.py 1        # 1번 문제만 채점")
-                print("  python3 check.py 01_dp_fibonacci  # 특정 문제 채점")
+                print("  python check.py --all    # 모든 문제 채점")
+                print("  python check.py 1        # 1번 문제만 채점")
+                print("  python check.py 01_dp_fibonacci  # 특정 문제 채점")
                 return
         else:
             # 파일명 입력한 경우
