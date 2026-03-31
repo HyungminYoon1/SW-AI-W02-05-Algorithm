@@ -15,7 +15,7 @@ for _ in range(m):
 
 # 1+2+...+k >= N이 되는 순간 그 이상 큰 점프는 사실상 필요 없음
 limit = int((2 * n) ** 0.5) + 2
-INF = 10**9
+INF = n+1
 
 dp = [[INF]*(limit + 2) for _ in range(n+1)]
 
